@@ -72,7 +72,7 @@ class Service {
 
     async get(userid) {
         try{// sanity check
-            if(!checker.isString(userid)){throw new appException(FuncArgWrong);}
+            if(!checker.isString(userid)){throw new appException(Constant.FuncArgWrong);}
 
             // db query
             var res = await this.repo.get({id : userid});
