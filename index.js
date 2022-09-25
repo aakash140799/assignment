@@ -16,7 +16,7 @@ dotenv.config();
 
 const logger = pino();
 if(process.env.BASE_URL){logger.warn('BASE_URL variable is not set');}
-const baseUrl = process.env.BASE_URL || '/'
+const baseUrl = process.env.BASE_URL || '/api'
 
 
 
