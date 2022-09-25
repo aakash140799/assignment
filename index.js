@@ -81,4 +81,4 @@ process.on('uncaughtException', (err) => {
 
 
 const port = process.env.PORT || 3001;
-app.listen(post, () => {logger.info(`server started on port ${port}`)});
+app.listen(port, () => {logger.info(`server started on port ${port}`)});
