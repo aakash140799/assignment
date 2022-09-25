@@ -14,7 +14,7 @@ class Factory
         }
 
         try {
-            const REDIS_URL = process.env.REDIS_URL || 'redis://localhost:6379';
+            const REDIS_URL = process.env.REDIS_URL || 'redis://red-ccnvtmta49940mp43c6g:6379';
 
             if(process.env.REDIS_URL === undefined) {logger.warn('REDIS_URL variable is not set');}
 
