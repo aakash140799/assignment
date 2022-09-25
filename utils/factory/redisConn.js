@@ -14,13 +14,11 @@ class Factory
         }
 
         try {
-            const REDIS_HOST = process.env.REDIS_HOST || 'localhost';
-            const REDIS_PORT = process.env.REDIS_PORT || '6379';
+            const REDIS_URL = process.env.REDIS_URL || 'redis://localhost:6379';
 
-            if(process.env.REDIS_HOST === undefined) {logger.warn(chalk.yellow('REDIS_HOST variable is not set'));}
-            if(process.env.REDIS_PORT === undefined) {logger.warn(chalk.yellow('REDIS_PORT variable is not set'));}
+            if(process.env.REDIS_URL === undefined) {logger.warn('REDIS_URL variable is not set');}
 
-            client = createClient({url: `redis://${REDIS_HOST}:${REDIS_PORT}`});
+            client = createClient({url: REDIS_URL});
 
             await client.connect();
             client.on('error', (err) => {throw err});
