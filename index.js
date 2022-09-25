@@ -79,4 +79,6 @@ process.on('uncaughtException', (err) => {
     logger.error(err, 'unCaughtError')
 })
 
-app.listen(443, () => {logger.info('server started')});
+
+const port = process.env.PORT || 3001;
+app.listen(post, () => {logger.info(`server started on port ${port}`)});
