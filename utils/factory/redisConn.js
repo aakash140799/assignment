@@ -2,6 +2,7 @@ import { createClient } from "redis";
 import appException from "../appException.js";
 import pino from 'pino';
 import chalk from "chalk";
+import Constant from "../Constant.js";
 
 var client = null;
 const logger = pino();
@@ -27,7 +28,7 @@ class Factory
             return client;
         } catch(err) {
             logger.error(err, chalk.red('redis connection failure'));
-            throw new appException('RedisConnFailed', err);
+            throw new appException(Constant.RedisConnFailed, err);
         }
     }
 };

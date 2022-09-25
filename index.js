@@ -7,6 +7,9 @@ import roleFactory from './services/role/Factory.js';
 import appException from './utils/appException.js';
 import constant from './utils/Constant.js';
 import cryptic from './utils/cryptic.js';
+import dotenv from 'dotenv';
+import helmet from 'helmet';
+dotenv.config();
 
 
 
@@ -20,6 +23,7 @@ const baseUrl = process.env.BASE_URL || '/'
 const app = express();
 app.use(express.json())
 app.use(express.urlencoded({ extended : true }))
+app.use(helmet()); // for security
 
 app.use(baseUrl, async (req, res, next) => {
     try {
@@ -36,7 +40,7 @@ app.use(baseUrl, async (req, res, next) => {
         return next(new appException('InvalidToken'));
     }
 
-    req.permit = (opName) => {logger.info('permit '+opName)}
+    req.permit = (opName) => {logger.info('permit '+opName)} // operation checker is disabled for showcasing
     // req.permit = await roleFactory.getService().getPermitter();
     next();
 });

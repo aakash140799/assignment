@@ -19,6 +19,12 @@ export default {
         http : 500,
     },
 
+    RedisConnFailed : {
+        msg : 'can;t connect to redis',
+        code : 30,
+        http : 500,
+    },
+
     ReqDataMissing : {
         msg : 'attribute data is required attributes, check docs for dto',
         code : 101,
