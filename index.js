@@ -54,6 +54,10 @@ app.use(baseUrl, await commentFactory.getApp());
 
 app.use(baseUrl, await roleFactory.getApp());
 
+app.use(baseUrl, (req, res, next) => {
+    return res.end('OK');
+})
+
 // 404 handler
 app.use("*", (req, res, next) => {
     return next(new appException(constant.EndpointMissing));
