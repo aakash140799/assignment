@@ -1,0 +1,464 @@
+post /user
+{
+    "data" : {
+        "email" : {
+            type : "string",
+            required : true,
+        },
+        "password" : {
+            type : "string",
+            required : true,
+        }
+    }
+}
+
+
+
+get /user
+authorization in headers
+
+
+
+
+put /user
+{
+    "data" : {
+        "email" : {
+            type : string,
+            required : false,
+        },
+        password : {
+            type : string,
+            required : false,
+        }
+    }
+}
+
+
+
+delete /user
+authroizaion in headers
+
+
+
+post /authenticate
+{
+    "data" : {
+        email : {
+            type : string,
+            required : true,
+        },
+        password : {
+            type : string,
+            required : true,
+        }
+    }
+}
+
+
+
+post /userBulk
+{
+    data : [{
+        email : {
+            type : string,
+            required : true,
+        },
+        password : {
+            type : string,
+            required : true,
+        }
+    }]
+}
+
+
+
+get /userBulk
+{
+    query : {       // to filter rows
+        type : object, // e.g. query : {email : 'aakash140799@gmail.com'}
+        required : false,
+        default : {}
+    },
+    exact : {   // where exact match query, or use LIKE operation
+        type: boolean,
+        required : false,
+        default : true,
+    },
+    select : {          // the attributes in select query
+        type : array,
+        required : false,
+        default : null
+    },
+    count : {   // for pagination
+        type : number,
+        required : false,
+        default : 1000,
+    },
+    index : {   // for pagination
+        type: number,
+        requried : false,
+        default : 1
+    }
+}
+
+
+
+put /userBulk
+{
+    data : {        // update document
+        email : {
+            type: string,
+            required : false,
+        },
+        password : {
+            type : string,
+            required : false,
+        }
+    }
+
+    query : {   // to filter rows
+        type : object, // e.g. query : {email : 'aakash140799@gmail.com'}
+        required : false,
+        default : {}
+    },
+    exact : {   // where exact match query, or use LIKE operation
+        type: boolean,
+        required : false,
+        default : true,
+    },
+    select : {          // the attributes in select query
+        type : array,
+        required : false,
+        default : null
+    },
+    count : {   // for pagination
+        type : number,
+        required : false,
+        default : 1000,
+    },
+    index : {   // for pagination
+        type: number,
+        requried : false,
+        default : 1
+    }
+}
+
+
+
+
+
+
+
+
+
+
+delete /userBulk
+{
+    query : {   // to filter rows
+        type : object, // e.g. query : {email : 'aakash140799@gmail.com'}
+        required : false,
+        default : {}
+    },
+    exact : {   // where exact match query, or use LIKE operation
+        type: boolean,
+        required : false,
+        default : true,
+    }
+}
+
+
+
+
+get /checkemail
+{
+    data : {        // to check existance of an email, similar to username already exists feature
+        email : {
+            type: string,
+            required : false,
+        },
+    }
+}
+
+
+post /follow/:followeeId
+authorization in headers
+
+
+
+post /unFollow/:followeeId
+authroization in headers
+
+
+
+get /user/followers     // return list of followers
+authroization in headers
+
+
+get /user/followees     // return list of followees
+authroization in headers
+
+
+
+
+
+get /postsearch // to get list of all_posts, with likes and comments
+{ 
+    select : {          // the attributes in select query
+        type : array,
+        required : false,
+        default : null
+    },
+    count : {   // for pagination
+        type : number,
+        required : false,
+        default : 1000,
+    },
+    index : {   // for pagination
+        type: number,
+        requried : false,
+        default : 1
+    }
+}
+
+
+
+
+post /post
+{
+    "data" : {
+        "title" : {
+            type : "string",
+            required : true,
+        },
+        "description" : {
+            type : "string",
+            required : true,
+        }
+    }
+}
+
+
+
+
+
+get /post/:postId
+// get details of post, all can do
+
+
+
+put /post/:postId
+// update details of post, only author can do
+
+
+delete /post/:postId
+// delete details of post, only author can do
+
+
+get /postBulk
+// author searches over his own posts
+{
+    query : {       // to filter rows
+        type : object, // e.g. query : {email : 'aakash140799@gmail.com'}
+        required : false,
+        default : {}
+    },
+    exact : {   // where exact match query, or use LIKE operation
+        type: boolean,
+        required : false,
+        default : true,
+    },
+    select : {          // the attributes in select query
+        type : array,
+        required : false,
+        default : null
+    },
+    count : {   // for pagination
+        type : number,
+        required : false,
+        default : 1000,
+    },
+    index : {   // for pagination
+        type: number,
+        requried : false,
+        default : 1
+    }
+}
+
+
+
+
+delete /postBulk
+// author deletes over his own posts
+{
+    query : {       // to filter rows
+        type : object, // e.g. query : {email : 'aakash140799@gmail.com'}
+        required : false,
+        default : {}
+    },
+    exact : {   // where exact match query, or use LIKE operation
+        type: boolean,
+        required : false,
+        default : true,
+    },
+}
+
+
+
+post /post/like/:postId
+// like a post
+
+
+post /post/unlike/:postId
+// neutral a post
+
+
+post /post/dislike/:postId
+// dislike a post
+
+
+post /post/countlikes/:postid
+// count likes on a post, like = 1, dislike = -1, neutral = 0
+
+
+post /comment/:postid
+// comment on a post
+{
+    data : {
+        comment : {
+            type : string,
+            required : true,
+        }
+    }
+}
+
+
+
+get /comment/:commentId
+-- set a comment
+
+
+put /comment/:commentId
+-- update a comment, only author
+{
+    data : {
+        comment : {
+            type : string,
+            required : true,
+        }
+    }
+}
+
+delete /comment/:commentId
+-- delete a comment, only author
+
+
+
+get /commentBulk
+-- author search over his own posts
+{
+    query : {       // to filter rows
+        type : object, // e.g. query : {email : 'aakash140799@gmail.com'}
+        required : false,
+        default : {}
+    },
+    exact : {   // where exact match query, or use LIKE operation
+        type: boolean,
+        required : false,
+        default : true,
+    },
+    select : {          // the attributes in select query
+        type : array,
+        required : false,
+        default : null
+    },
+    count : {   // for pagination
+        type : number,
+        required : false,
+        default : 1000,
+    },
+    index : {   // for pagination
+        type: number,
+        requried : false,
+        default : 1
+    }
+}
+
+
+
+
+
+
+
+delete /commentBulk
+-- author search over his own posts
+{
+    query : {       // to filter rows
+        type : object, // e.g. query : {email : 'aakash140799@gmail.com'}
+        required : false,
+        default : {}
+    },
+    exact : {   // where exact match query, or use LIKE operation
+        type: boolean,
+        required : false,
+        default : true,
+    }
+}
+
+
+
+get /comment/see/:postId
+-- see all comments on a public post
+{
+    select : {          // the attributes in select query
+        type : array,
+        required : false,
+        default : null
+    },
+    count : {   // for pagination
+        type : number,
+        required : false,
+        default : 1000,
+    },
+    index : {   // for pagination
+        type: number,
+        requried : false,
+        default : 1
+    }
+}
+
+
+
+
+post /role
+-- no body as of now
+-- creates a new role
+
+
+post /role/:roleId
+-- add an operation to role
+{
+    data : {
+        opName : {
+            type : String,
+            requried : true,
+        }
+    }
+}
+
+
+delete /role/:roleId
+-- add an operation from role
+{
+    data : {
+        opName : {
+            type : String,
+            requried : true,
+        }
+    }
+}
+
+
+
+get /role/:roleId
+-- get all operations from role
