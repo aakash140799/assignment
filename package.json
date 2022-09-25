@@ -1,0 +1,34 @@
+{
+  "name": "assignment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "bcrypt": "^5.0.1",
+    "chai": "^4.3.6",
+    "chalk": "^5.0.1",
+    "check-password-strength": "^2.0.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "helmet": "^6.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "mocha": "^10.0.0",
+    "nodemon": "^2.0.20",
+    "p-iteration": "^1.1.8",
+    "pg": "^8.8.0",
+    "pino": "^8.6.0",
+    "pino-pretty": "^9.1.0",
+    "rate-limiter-flexible": "^2.3.10",
+    "redis": "^4.3.1",
+    "sequelize": "^6.23.1",
+    "url-join": "^5.0.0"
+  }
+}
